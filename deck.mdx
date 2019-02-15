@@ -7,18 +7,10 @@ export { default as theme } from './theme'
   <title>Kubernetes RBAC</title>
 </Head>
 
-## MXH DevOps Guild
+## Maxwell Health DevOps Guild
 
 ### 2019-02-15
 Kubernetes RBAC
-
----
-
-## About Tom
-
-- Computers
-- Noise
-- Tetris
 
 ---
 
@@ -31,21 +23,9 @@ Kubernetes RBAC
 
 ## Why Are We Moving To RBAC?
 
-- Poka Yoke
-- Security 
+- Poka Yoke (Safety Bumpers)
+- Security
 - ~~Checkboxes~~ Compliance
-
----
-
-## Poka Yoke?
-
----
-
-<Image src='wat.jpg' />
-
----
-
-Error Prevention Via Safety Bumpers
 
 ```notes
 compare ns: 'private' in python vs 'private' in ruby
@@ -63,18 +43,95 @@ compare ns: 'private' in python vs 'private' in ruby
 
 ## What Is RBAC Composed of?
 - `rbac.authorization.k8s.io`
-  - Roles
-  - RoleBindings
+  - Roles, ClusterRoles
+  - RoleBindings, ClusterRoleBindings
 
 ```notes
 - Can be NS specific, or Cluster wide
+```
+
+---
+
+## What Is A Role?
+- List o' permissions
+- Default DENY
+- Additive
+
+```notes
 - Roles grant permission to k8s api objects
+```
+---
+
+## Example Role
+
+Read pods in a NS:
+```yaml
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: default
+  name: pod-reader
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]
+```
+
+```notes
+https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-examples
+```
+---
+
+## Example Role That's Useful
+
+`Tom opens a terminal up. Joy.`
+
+---
+
+## What Is a Role Binding?
+- Mapping between subject and role
+
+```notes
 - Bindings map roles and accounts (subjects)
 ```
 
 ---
 
-## How Do We Build A Role?
+## Example Role Binding
 
+```yaml
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: pod-reader
+  namespace: default
+subjects:
+- kind: User
+  name: jane # Name is case sensitive
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role #this must be Role or ClusterRole
+  name: pod-reader # this must match the name of the Role or ClusterRole you wish to bind to
+  apiGroup: rbac.authorization.k8s.io
+```
+
+```notes
+see the kubernetes.io docs above for link
+talk about users vs service accounts
+```
+
+---
+
+## Will I Have To Write My Own?
+
+Maybe.
+I have examples!
+kubernetes.io has more examples!
+
+```notes
+Depends on your service. If you modify k8s objects, yes.
+```
+
+---
 
 # Thanks!
