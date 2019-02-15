@@ -1,0 +1,80 @@
+import { Head } from 'mdx-deck'
+import { Image } from 'mdx-deck'
+
+export { default as theme } from './theme'
+
+<Head>
+  <title>Kubernetes RBAC</title>
+</Head>
+
+## MXH DevOps Guild
+
+### 2019-02-15
+Kubernetes RBAC
+
+---
+
+## About Tom
+
+- Computers
+- Noise
+- Tetris
+
+---
+
+## Where Are We Now?
+- Sysdig
+- Datadog
+- ELK
+
+---
+
+## Why Are We Moving To RBAC?
+
+- Poka Yoke
+- Security 
+- ~~Checkboxes~~ Compliance
+
+---
+
+## Poka Yoke?
+
+---
+
+<Image src='wat.jpg' />
+
+---
+
+Error Prevention Via Safety Bumpers
+
+```notes
+compare ns: 'private' in python vs 'private' in ruby
+- deploying stuff to the wrong place
+```
+
+---
+
+## Security
+- Brian can sleep easier
+- Customers can sleep easier
+- Oncall can sleep easier
+
+---
+
+## What Is RBAC Composed of?
+- `rbac.authorization.k8s.io`
+  - Roles
+  - RoleBindings
+
+```notes
+- Can be NS specific, or Cluster wide
+- Roles grant permission to k8s api objects
+- Bindings map roles and accounts (subjects)
+```
+
+---
+
+## How Do We Build A Role?
+
+
+# Thanks!
