@@ -1,10 +1,13 @@
-Note to self:
+# Kubernetes RBAC DevOps Guild Talk
+This repo contains slides for a chat on role based access control.
+
+
+# Note to self:
 ```
 $ docker run -p 8080:8080 -v $(pwd):/deck/ -it tnorris/mdx-deck /bin/bash
 root@79aed44c352d:/# cd /deck
 root@79aed44c352d:/deck# npm run build
 ```
-
 
 
 # mdx-deck basic template
