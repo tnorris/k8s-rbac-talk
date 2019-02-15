@@ -28,7 +28,6 @@ Kubernetes RBAC
 - ~~Checkboxes~~ Compliance
 
 ```notes
-compare ns: 'private' in python vs 'private' in ruby
 - deploying stuff to the wrong place
 ```
 
@@ -47,7 +46,7 @@ compare ns: 'private' in python vs 'private' in ruby
   - RoleBindings, ClusterRoleBindings
 
 ```notes
-- Can be NS specific, or Cluster wide
+- Can be NameSpace specific, or Cluster wide
 ```
 
 ---
@@ -64,7 +63,7 @@ compare ns: 'private' in python vs 'private' in ruby
 
 ## Example Role
 
-Read pods in a NS:
+Read pods in a NameSpace:
 ```yaml
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
